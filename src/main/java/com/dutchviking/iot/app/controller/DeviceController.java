@@ -10,8 +10,11 @@ import java.util.List;
 @RestController
 @RequestMapping("/devices")
 public class DeviceController {
-    @Autowired
-    private DeviceRepository deviceRepository;
+    private final DeviceRepository deviceRepository;
+
+    public DeviceController(DeviceRepository deviceRepository) {
+        this.deviceRepository = deviceRepository;
+    }
 
     @GetMapping
     public List<Device> getAllDevices() {
